@@ -7,12 +7,12 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-This component is used to add master capabilities on the context element.
+This element is used to add master capabilities on the context element.
 It extends the native html `template`.
 It should be used in conjunction with xp-slave-state.
 
-@component xp-master-state
-@description This component is used to add master capabilities on the context element.
+@element xp-master-state
+@description This element is used to add master capabilities on the context element.
 @extends template
 
 @dependency polymer Polymer/polymer#^0.5
@@ -26,7 +26,7 @@ It should be used in conjunction with xp-slave-state.
 <polymer-element name="xp-master-state" extends="template" attributes="context slaves slaveSelector slaveTag">
 
     <script>
-        XPComponent({
+        XPElement({
 
             /**
              * Appends a slave.
