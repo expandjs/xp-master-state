@@ -141,8 +141,8 @@ It should be used in conjunction with xp-slave-state.
             contextChanged: function (pre, post) {
                 var self = this;
                 if (arguments.length < 2) { return; }
-                if (pre) { XP.unlisten(pre, {'xp-slave': self.handleSlaveBinded}); }
-                if (post) { XP.listen(post, {'xp-slave': self.handleSlaveBinded}); }
+                if (pre) { XP.unlisten(pre, {'xp-slave': self.handleSlaveBound}); }
+                if (post) { XP.listen(post, {'xp-slave': self.handleSlaveBound}); }
             },
 
             /*********************************************************************/
@@ -154,7 +154,7 @@ It should be used in conjunction with xp-slave-state.
 
             // LISTENER
             ready: function () {
-                this.handleSlaveBinded = this.handleSlave.bind(this);
+                this.handleSlaveBound = this.handleSlave.bind(this);
             },
 
             /*********************************************************************/
