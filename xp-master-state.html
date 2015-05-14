@@ -66,9 +66,9 @@ It should be used in conjunction with xp-slave-state.
              * @private
              */
             couple: function (slave) {
-                var self = this;
-                slave.couple(self.slaves, self.context);
-                return self;
+                var self = this, index = self.slaves.indexOf(slave);
+                if (index XP.append(self.slaves, slave);
+                return slave;
             },
 
             /**
@@ -76,13 +76,12 @@ It should be used in conjunction with xp-slave-state.
              *
              * @method decouple
              * @param {Element} slave
-             * @returns {Element}
+             * @returns {Element | undefined}
              * @private
              */
             decouple: function (slave) {
-                var self = this;
-                slave.decouple(self.slaves, self.context);
-                return self;
+                var self = this, index = self.slaves.indexOf(slave);
+                if (index >= 0) { return XP.pull(self.slaves, slave) && slave; }
             },
 
             /*********************************************************************/
@@ -174,7 +173,8 @@ It should be used in conjunction with xp-slave-state.
                 if (event.detail.masterSelector && !XP.matches(self.context, event.detail.masterSelector)) { return; }
 
                 // Coupling
-                self[event.detail.isAttached ? 'couple' : 'decouple'](event.detail.slave);
+                self[event.detail.isAttached ? 'couple' : 'decouple'](event.detail.firer);
+                event.detail.coupler(self.context);
 
                 // Stopping
                 event.stopPropagation();
