@@ -40,7 +40,7 @@ It should be used in conjunction with xp-slave-state.
              */
             appendSlave: function (properties) {
                 XP.assertArgument(XP.isVoid(properties) || XP.isObject(properties), 1, 'Object');
-                return this.slaveTag ? XP.appendChild(this.context, XP.createElement(this.slaveTag, {properties: properties})) : undefined;
+                return this.slaveTag ? this.couple(XP.appendChild(this.context, XP.createElement(this.slaveTag, {properties: properties}))) : undefined;
             },
 
             /**
@@ -48,11 +48,11 @@ It should be used in conjunction with xp-slave-state.
              *
              * @method removeSlave
              * @param {Element} [slave]
-             * @returns {Element}
+             * @returns {Element | undefined}
              */
             removeSlave: function (slave) {
                 XP.assertArgument(XP.isVoid(slave) || XP.isElement(slave), 1, 'Element');
-                return XP.includes(this.slaves, slave) ? XP.removeChild(slave.parentNode, slave) : undefined;
+                return slave ? XP.removeChild(slave.parentNode, this.decouple(slave)) : undefined;
             },
 
             /*********************************************************************/
@@ -62,12 +62,12 @@ It should be used in conjunction with xp-slave-state.
              *
              * @method couple
              * @param {Element} slave
-             * @returns {Element}
+             * @returns {Element | undefined}
              * @private
              */
             couple: function (slave) {
-                var self = this, index = self.slaves.indexOf(slave);
-                if (index XP.append(self.slaves, slave);
+                var self = this;
+                XP.append(self.slaves, slave);
                 return slave;
             },
 
@@ -172,8 +172,10 @@ It should be used in conjunction with xp-slave-state.
                 if (event.detail.masterTag && event.detail.masterTag !== self.context.tagName.toLowerCase()) { return; }
                 if (event.detail.masterSelector && !XP.matches(self.context, event.detail.masterSelector)) { return; }
 
-                // Coupling
+                // Coupling (master side)
                 self[event.detail.isAttached ? 'couple' : 'decouple'](event.detail.firer);
+
+                // Coupling (slave side)
                 event.detail.coupler(self.context);
 
                 // Stopping
