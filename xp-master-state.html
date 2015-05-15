@@ -40,7 +40,7 @@ It should be used in conjunction with xp-slave-state.
              */
             appendSlave: function (properties) {
                 XP.assertArgument(XP.isVoid(properties) || XP.isObject(properties), 1, 'Object');
-                return this.slaveTag ? this.couple(XP.appendChild(this.context, XP.createElement(this.slaveTag, {properties: properties}))) : undefined;
+                return XP.appendChild(this.context, this.slaveTag && XP.createElement(this.slaveTag, {properties: properties}));
             },
 
             /**
@@ -52,7 +52,7 @@ It should be used in conjunction with xp-slave-state.
              */
             removeSlave: function (slave) {
                 XP.assertArgument(XP.isVoid(slave) || XP.isElement(slave), 1, 'Element');
-                return slave ? XP.removeChild(slave.parentNode, this.decouple(slave)) : undefined;
+                return XP.removeChild(slave.parentNode, XP.includes(this.slaves, slave) ? slave : undefined);
             },
 
             /*********************************************************************/
@@ -174,7 +174,7 @@ It should be used in conjunction with xp-slave-state.
 
                 // Coupling (master side)
                 self[event.detail.isAttached ? 'couple' : 'decouple'](event.detail.firer);
-
+                if (!event.detail.isAttached) console.log(self.context, event.detail);
                 // Coupling (slave side)
                 event.detail.coupler(self.context);
 
