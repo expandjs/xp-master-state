@@ -174,7 +174,7 @@ It should be used in conjunction with xp-slave-state.
 
                 // Coupling (master side)
                 self[event.detail.isAttached ? 'couple' : 'decouple'](event.detail.firer);
-                if (!event.detail.isAttached) console.log(self.context, event.detail);
+
                 // Coupling (slave side)
                 event.detail.coupler(self.context);
 
