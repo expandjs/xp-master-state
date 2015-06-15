@@ -22,8 +22,8 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs",
-    "xp-slave-state": "ExpandJS/xp-slave-state",
+    "expandjs": "ExpandJS/expandjs#alpha",
+    "xp-slave-state": "ExpandJS/xp-slave-state#alpha",
     "polymer": "Polymer/polymer#^0.5"
   }
 }
