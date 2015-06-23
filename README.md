@@ -1,3 +1,3 @@
-# xp-master
+# xp-master-state
 
-See the [`documentation page`](http://expandjs.com/elements/xp-master) for more information.
+See the [`documentation page`](http://expandjs.com/elements/xp-master-state) for more information.
