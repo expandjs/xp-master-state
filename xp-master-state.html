@@ -14,9 +14,10 @@ It should be used in conjunction with xp-slave-state.
 @element xp-master-state
 @description A custom element used to add slave capabilities on the context element for a master-slave pattern
 @keywords web app, html5, expandjs, web-components
-@group states
+@group functionality
 @homepage http://expandjs.com/elements/xp-master-state
 
+@extends template
 @behavior xp-array-behavior http://expandjs.com/elements/xp-array-behavior
 
 @dependency polymer Polymer/polymer
@@ -33,6 +34,9 @@ It should be used in conjunction with xp-slave-state.
 
         // ELEMENT
         is: 'xp-master-state',
+
+        // EXTENDS
+        extends: 'template',
 
         // BEHAVIORS
         behaviors: [
@@ -62,7 +66,7 @@ It should be used in conjunction with xp-slave-state.
          */
         removeSlave: function (slave) {
             XP.assertArgument(XP.isVoid(slave) || XP.isElement(slave), 1, 'Element');
-            return XP.removeChild(slave && Polymer.dom(slave).parentNode, XP.includes(this.slaves, slave) ? slave : null);
+            return XP.removeChild(slave && Polymer.dom(Polymer.dom(slave).parentNode), XP.includes(this.slaves, slave) ? slave : null);
         },
 
         /*********************************************************************/
@@ -131,6 +135,7 @@ It should be used in conjunction with xp-slave-state.
              */
             slaves: {
                 notify: true,
+                readOnly: true,
                 type: Array,
                 value: function () { return []; }
             }
@@ -140,7 +145,7 @@ It should be used in conjunction with xp-slave-state.
 
         // LISTENER
         attached: function () {
-            this.listen(this.domHost, 'xp-slave', '_handleSlave');
+            this.listen(this.domHost, 'xp-slave-state', '_handleSlave');
         },
 
         /*********************************************************************/

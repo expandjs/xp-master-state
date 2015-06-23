@@ -1,9 +1,9 @@
 {
-  "name": "xp-master-state",
+  "name": "xp-master",
   "license": "BSD-3-Clause",
   "version": "0.9.0",
   "description": "A custom element used to add slave capabilities on the context element for a master-slave pattern",
-  "homepage": "http://expandjs.com/elements/xp-master-state",
+  "homepage": "http://expandjs.com/elements/xp-master",
   "authors": [
     "Giuliano Rullo <g.rullo@expandjs.com>",
     "Maurizio Stefàno <m.stefano@expandjs.com>",
@@ -16,7 +16,7 @@
     "web-components"
   ],
   "main": [
-    "xp-master-state.html"
+    "xp-master.html"
   ],
   "ignore": [
     "**/.*"
