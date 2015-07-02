@@ -46,32 +46,6 @@ It should be used in conjunction with xp-slave-state.
         /*********************************************************************/
 
         /**
-         * Appends a slave.
-         *
-         * @method appendSlave
-         * @param {Object} [properties]
-         * @returns {Element}
-         */
-        appendSlave: function (properties) {
-            XP.assertArgument(XP.isVoid(properties) || XP.isObject(properties), 1, 'Object');
-            return XP.appendChild(Polymer.dom(this.domHost), this.slaveTag ? XP.createElement(this.slaveTag, {properties: properties}) : null);
-        },
-
-        /**
-         * Removes a slave.
-         *
-         * @method removeSlave
-         * @param {Element} [slave]
-         * @returns {Element}
-         */
-        removeSlave: function (slave) {
-            XP.assertArgument(XP.isVoid(slave) || XP.isElement(slave), 1, 'Element');
-            return XP.removeChild(slave && Polymer.dom(Polymer.dom(slave).parentNode), XP.includes(this.slaves, slave) ? slave : null);
-        },
-
-        /*********************************************************************/
-
-        /**
          * Couples the master to a slave.
          *
          * @method _couple
