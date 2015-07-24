@@ -1,7 +1,7 @@
 {
   "name": "xp-master-state",
   "license": "BSD-3-Clause",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "A custom element used to add slave capabilities on the context element for a master-slave pattern",
   "homepage": "http://expandjs.com/elements/xp-master-state",
   "authors": [
@@ -22,8 +22,8 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs#0.9.4",
-    "xp-array-behavior": "ExpandJS/xp-array-behavior#0.9.4",
+    "expandjs": "ExpandJS/expandjs#0.9.5",
+    "xp-array-behavior": "ExpandJS/xp-array-behavior#0.9.5",
     "polymer": "Polymer/polymer#^1.0.0"
   }
 }
